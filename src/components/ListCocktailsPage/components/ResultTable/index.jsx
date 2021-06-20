@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import './ResultTable.css';
 
 function ResultTable(props) {
-  const [isAdded, setIsAdded] = useState(false);
-
   const listCocktails = useSelector(
     (state) => state.GlobalReducer.listCocktails
   );
@@ -19,9 +17,7 @@ function ResultTable(props) {
 
   const getCocktailInfo = (cocktail) => {
     dispatch(GlobalActions.getCocktailInfo(cocktail));
-    
-  }
-  
+  };
 
   const renderDrinks = (cocktail, index) => {
     return (
@@ -41,7 +37,7 @@ function ResultTable(props) {
             className="btn btn-info "
             onClick={() => {
               console.log('object');
-              getCocktailInfo(cocktail)
+              getCocktailInfo(cocktail);
             }}
           >
             View Detail
@@ -52,7 +48,6 @@ function ResultTable(props) {
             className="btn btn-primary"
             onClick={() => {
               getCocktail(cocktail);
-              setIsAdded(true);
             }}
             // disabled={isAdded}
             // style={isAdded ? styleAdded : null}

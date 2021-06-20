@@ -2,12 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Header.module.css';
+import { GlobalActions } from '../../../../redux/slices/globalSlice';
 
 function Header(props) {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     localStorage.clear();
+    dispatch(GlobalActions.handleUserLogout())
   };
 
   return (

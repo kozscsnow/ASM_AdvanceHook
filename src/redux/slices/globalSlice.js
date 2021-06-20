@@ -43,6 +43,10 @@ const globalSlice = createSlice({
     setIsLoading(state, action) {
       state.isLoading = action.payload;
     },
+    handleUserLogout(state, action) {
+      state = initialState;
+      // state.initialState = [];
+    },
   },
 });
 

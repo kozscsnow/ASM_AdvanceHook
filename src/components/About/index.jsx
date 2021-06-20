@@ -6,9 +6,16 @@ import styles from './About.module.css';
 
 function About(props) {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(GlobalActions.setIsLoading(false));
+    const loadingFake = setTimeout(() => {
+      dispatch(GlobalActions.setIsLoading(false));
+    }, 500);
+    return () => {
+      clearTimeout(loadingFake);
+    };
   }, []);
+
   return (
     <>
       <div className={styles.about__link}>

@@ -4,10 +4,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 
 function CartPage(props) {
-  const history = useHistory();
-  const handleClearLocalStorage = () => {
-    localStorage.clear();
-  };
   const listCocktailsSelected = useSelector(
     (state) => state.GlobalReducer.listCocktailsSelected
   );
@@ -16,6 +12,8 @@ function CartPage(props) {
   const removeCocktail = (indexCocktail) => {
     dispatch(GlobalActions.removeCocktailsSelected(indexCocktail));
   };
+
+  dispatch(GlobalActions.setIsLoading(false))
   const renderDrinks = (cocktail, index) => {
     return (
       <tr key={cocktail.idDrink}>
@@ -44,10 +42,7 @@ function CartPage(props) {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-8">
-          <button onClick={handleClearLocalStorage}>
-            Clear LocalStorage Cart
-          </button>
-          <Link to="/" className="btn btn-primary">
+          <Link to="/" className="btn btn-primary my-2">
             Back
           </Link>
           <table className="table table-striped table-hover table-dark">

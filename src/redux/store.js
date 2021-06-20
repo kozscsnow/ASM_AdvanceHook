@@ -3,7 +3,8 @@ import logger from 'redux-logger';
 
 import rootReducer from './rootReducer';
 
-const middleware = [...getDefaultMiddleware(), logger];
+// const middleware = [...getDefaultMiddleware(), logger];
+const middleware = undefined;
 
 const store = configureStore({
   reducer: rootReducer,
