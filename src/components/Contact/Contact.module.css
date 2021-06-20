@@ -1,0 +1,34 @@
+.about {
+    position: relative;
+    
+    width: 400px;
+    height: 80px;
+    margin: 10px auto;
+  
+  }
+  .about h1 {
+    position: absolute;
+    top: 0px;
+  
+    width: 100%;
+  
+    font-size: 40px;
+  }
+  .about h1:nth-child(1) {
+    color: transparent;
+    -webkit-text-stroke: 1px #62e048;
+  }
+  .about h1:nth-child(2) {
+    color: #62e048;
+    animation: waterAnimation 3s ease-in-out infinite;
+  }
+  @keyframes waterAnimation {
+    0%,
+    100% {
+      clip-path: polygon(0 42%, 13% 48%, 26% 55%, 41% 64%, 56% 65%, 69% 58%, 84% 45%, 100% 38%, 100% 100%, 0% 100%);
+    }
+    50% {
+      clip-path: polygon(0 63%, 14% 57%, 25% 50%, 40% 42%, 56% 40%, 71% 44%, 84% 50%, 100% 60%, 100% 100%, 0% 100%);
+    }
+  }
+  

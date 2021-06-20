@@ -1,0 +1,76 @@
+.login__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+form.login-form {
+  min-width: 400px;
+  padding: 30px;
+
+  border-radius: 24px;
+  background: #191919;
+
+  box-shadow: 10px 10px 20px #191919;
+}
+label {
+  margin-bottom: 10px;
+  color: #fff;
+}
+.form-group {
+  display: flex;
+  flex-flow: wrap column;
+  align-items: center;
+
+  margin: 18px auto;
+}
+input#form-id,
+input#form-password {
+  width: 200px;
+  padding: 6px;
+  margin: 0px;
+  border: solid 2px #0984e3;
+  outline: none;
+  border-radius: 24px;
+
+  text-align: center;
+
+  color: #fff;
+  background-color: #191919;
+
+  cursor: pointer;
+
+  transition: 0.5s;
+}
+
+input#form-id:hover,
+input#form-password:hover {
+  width: 280px;
+
+  border-color: #fdcb6e;
+}
+button.login-btn {
+  width: 216px;
+  margin-top: 10px;
+  padding: 6px;
+  border: solid 2px #55efc4;
+  background: none;
+  border-radius: 24px;
+
+  color: #fff;
+  cursor: pointer;
+
+  transition: 0.5s;
+  outline: none;
+}
+
+button.login-btn:hover {
+  background-color: #81ecec;
+  color: #95a5a6;
+}
+
+.form-group-password small.form-valid {
+  color: #f1c40f;
+}

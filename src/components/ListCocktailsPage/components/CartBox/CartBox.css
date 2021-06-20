@@ -1,0 +1,18 @@
+.cart-box {
+  position: fixed;
+  top: 6vw;
+  right: 4vw;
+}
+
+.cart-box__items{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 220px;
+    margin-bottom: 10px;
+}
+
+.item__name{
+    color: #fff
+}
