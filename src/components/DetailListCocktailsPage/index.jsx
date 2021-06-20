@@ -3,20 +3,16 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function DetailListCocktailsPage(props) {
-  const handleClearLocalStorage = () => {
-    localStorage.clear();
-  };
   const cocktailInfo = useSelector((state) => state.GlobalReducer.cocktailInfo);
 
   return (
     <div>
-      <button onClick={handleClearLocalStorage}>Clear LocalStorage Cart</button>
-      <Link to="/" className="btn btn-primary">
-        Back
-      </Link>
       <br />
       <div className="container">
         <div className="row">
+          <Link to="/" className="btn btn-primary mb-2">
+            Back
+          </Link>
           <table className="table table-striped table-hover table-dark ">
             <tr className="text-center">
               <th className="text-center"></th>

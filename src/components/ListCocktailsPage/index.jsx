@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 import CartBox from './components/CartBox';
 import NumberDrinksBox from './components/NumberDrinksBox';
+import Header from './components/Header';
 import ResultTable from './components/ResultTable';
-
-import { Spin } from 'antd';
 
 function ListCocktailsPage(props) {
   // const listCocktails = useSelector(
   //   (state) => state.GlobalReducer.listCocktails
   // );
+  const [test, setTest] = useState(true);
   const dispatch = useDispatch();
-  const count = useSelector((state) => state.GlobalReducer.count);
-  const isLoading = useSelector((state) => state.GlobalReducer.isLoading);
+  // const count = useSelector((state) => state.GlobalReducer.count);
+  // const isLoading = useSelector((state) => state.GlobalReducer.isLoading);
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
     handleGetDrinks();
@@ -28,8 +28,6 @@ function ListCocktailsPage(props) {
         const dataListCocktails = response.data.drinks;
         dispatch(GlobalActions.getListCocktailAPI(dataListCocktails));
         dispatch(GlobalActions.setIsLoading(false));
-
-        // setIsLoading(false);
       })
       .catch((e) => {
         dispatch(GlobalActions.setIsLoading(true));
@@ -40,45 +38,15 @@ function ListCocktailsPage(props) {
       });
   };
 
-  const handleClearLocalStorage = () => {
-    localStorage.clear();
-  };
-
   return (
     <div>
       <div className="container" style={{ position: 'relative' }}>
         <div className="row justify-content-center">
           <div className="col-8">
-            <Spin size="large" />
-            <button
-              onClick={() => {
-                dispatch(GlobalActions.increaseCounter());
-              }}
-            >
-              Add
-            </button>
-            {count}
-            <button onClick={handleClearLocalStorage}>
-              Clear LocalStorage
-            </button>
-            <Link to="/about">go about</Link>
-            <Link
-              to="/cart"
-              className="btn btn-primary"
-              style={{ position: 'fixed', top: '2vw', right: '10vw' }}
-            >
-              Go Cart
-            </Link>
-
+            <Header />
             <NumberDrinksBox />
             <ResultTable />
             <CartBox />
-            {/* {isLoading ? (
-              <h4 className="my-3">Please wait ....</h4>
-            ) : (
-              <NumberDrinksBox />
-            )} */}
-            {/* {!isLoading && <ResultTable />} */}
           </div>
         </div>
       </div>

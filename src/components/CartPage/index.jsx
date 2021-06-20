@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 
-
-
 function CartPage(props) {
   const history = useHistory();
   const handleClearLocalStorage = () => {
@@ -49,12 +47,9 @@ function CartPage(props) {
           <button onClick={handleClearLocalStorage}>
             Clear LocalStorage Cart
           </button>
-          <Link to="/" className="btn btn-primary" >
+          <Link to="/" className="btn btn-primary">
             Back
           </Link>
-          {/* <button className="btn btn-primary" onClick={() => history.push('/')}>
-            Back
-          </button> */}
           <table className="table table-striped table-hover table-dark">
             <thead>
               <tr>
