@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 
+
 function DetailListCocktailsPage(props) {
   const [cocktailInfoFromID, setCocktailInfoFromID] = useState([]);
   const cocktailInfo = useSelector((state) => state.GlobalReducer.cocktailInfo);
@@ -18,7 +19,9 @@ function DetailListCocktailsPage(props) {
     //Get Cocktail from ID
     axios
       .get(
-        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailID}`
+        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${
+          cocktailID ? cocktailID : '17225'
+        }`
       )
       .then((response) => {
         const dataCocktailInfoFromID = response.data.drinks;
@@ -45,13 +48,27 @@ function DetailListCocktailsPage(props) {
             <thead>
               <tr className="text-center">
                 <th className="text-center"></th>
-                <th className="text-center">{cocktailInfoFromID.strDrink}</th>
+                <th className="text-center">
+                  {cocktailInfoFromID.strCategory}
+                </th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <th style={{ minWidth: '140px' }}>Instructions 1</th>
+                <th style={{ minWidth: '140px' }}>Alcoholic</th>
+                <td>{cocktailInfoFromID.strAlcoholic}</td>
+              </tr>
+              <tr>
+                <th>Glass</th>
+                <td>{cocktailInfoFromID.strGlass}</td>
+              </tr>
+              <tr>
+                <th>Modified</th>
+                <td>{cocktailInfoFromID.dateModified}</td>
+              </tr>
+              <tr>
+                <th>Instructions 1</th>
                 <td>{cocktailInfoFromID.strInstructions}</td>
               </tr>
               <tr>

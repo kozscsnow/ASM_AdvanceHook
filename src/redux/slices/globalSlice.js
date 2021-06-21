@@ -11,18 +11,8 @@ const globalSlice = createSlice({
   name: 'globalSlice',
   initialState,
   reducers: {
-    increaseCounter(state, action) {
-      state.count = state.count + state.step;
-    },
-    decreaseCounter(state, action) {
-      state.count = state.count - state.step;
-    },
-    changeStep(state, action) {
-      state.step = action.payload;
-    },
     getListCocktailAPI(state, action) {
       state.listCocktails = action.payload;
-      state.count = state.count + state.step;
     },
     pushCocktailsSelected(state, action) {
       state.listCocktailsSelected.push(action.payload);
@@ -39,7 +29,6 @@ const globalSlice = createSlice({
     resetStoreRedux(state, action) {
       state.listCocktailsSelected = [];
       state.listCocktails = [];
-      // state = initialState;
     },
   },
 });

@@ -18,20 +18,26 @@ function CartBox(props) {
   const renderDrinks = (cocktail, index) => {
     return (
       <div key={cocktail.idDrink} className="cart-box__items">
-        <div className="text-center img-thumbnail img-thumbnail-wrapper">
+        <div className="text-center img-thumbnail img-thumbnail-wrapper cart-box__thumbnail">
           <img
             src={cocktail.strDrinkThumb}
             className="img-thumbnail-item "
             alt={cocktail.strDrink}
           ></img>
         </div>
-        <div className="item__name">{cocktail.strDrink}</div>
+        <div className="item__name cart-box__name">{cocktail.strDrink}</div>
         <div>
           <button
-            className="btn btn-info "
+            className="btn btn-info cart-box__btn--large"
             onClick={() => removeCocktail(index)}
           >
             Remove
+          </button>
+          <button
+            className="btn btn-info cart-box__btn--small"
+            onClick={() => removeCocktail(index)}
+          >
+            X
           </button>
         </div>
       </div>
