@@ -1,25 +1,18 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { GlobalActions } from '../../redux/rootAction';
 import CartBox from './components/CartBox';
-import NumberDrinksBox from './components/NumberDrinksBox';
 import Header from './components/Header';
+import NumberDrinksBox from './components/NumberDrinksBox';
 import ResultTable from './components/ResultTable';
 
 function ListCocktailsPage(props) {
-  // const listCocktails = useSelector(
-  //   (state) => state.GlobalReducer.listCocktails
-  // );
-  const [test, setTest] = useState(true);
   const dispatch = useDispatch();
-  // const count = useSelector((state) => state.GlobalReducer.count);
-  // const isLoading = useSelector((state) => state.GlobalReducer.isLoading);
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
     handleGetDrinks();
-  }, []);
+  });
 
   const handleGetDrinks = () => {
     axios

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import '../../../../App.css';
 import { GlobalActions } from '../../../../redux/rootAction';
-import { Link } from 'react-router-dom';
 import './ResultTable.css';
 
 function ResultTable(props) {
@@ -49,8 +49,6 @@ function ResultTable(props) {
             onClick={() => {
               getCocktail(cocktail);
             }}
-            // disabled={isAdded}
-            // style={isAdded ? styleAdded : null}
           >
             Add
           </button>

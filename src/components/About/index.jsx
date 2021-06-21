@@ -8,13 +8,14 @@ function About(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(GlobalActions.setIsLoading(true));
     const loadingFake = setTimeout(() => {
       dispatch(GlobalActions.setIsLoading(false));
     }, 500);
     return () => {
       clearTimeout(loadingFake);
     };
-  }, []);
+  });
 
   return (
     <>

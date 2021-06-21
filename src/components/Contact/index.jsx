@@ -8,14 +8,16 @@ import { Link } from 'react-router-dom';
 function Contact(props) {
   const dispatch = useDispatch();
 
+  //Fake Loading
   useEffect(() => {
+    dispatch(GlobalActions.setIsLoading(true));
     const loadingFake = setTimeout(() => {
       dispatch(GlobalActions.setIsLoading(false));
     }, 500);
     return () => {
       clearTimeout(loadingFake);
     };
-  }, []);
+  });
 
   return (
     <>

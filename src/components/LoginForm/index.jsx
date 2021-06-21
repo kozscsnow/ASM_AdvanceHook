@@ -50,7 +50,7 @@ function LoginForm(props) {
     setPassword(e.target.value);
     localStorage.setItem('password', e.target.value);
   };
-
+  //Fake Loading
   useEffect(() => {
     const loadingFake = setTimeout(() => {
       dispatch(GlobalActions.setIsLoading(false));
@@ -58,7 +58,7 @@ function LoginForm(props) {
     return () => {
       clearTimeout(loadingFake);
     };
-  }, []);
+  });
   return (
     <div>
       <div className="login__container ">

@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  count: 0,
-  step: 1,
   listCocktails: [],
   listCocktailsSelected: [],
   cocktailInfo: '',
@@ -11,7 +9,7 @@ const initialState = {
 
 const globalSlice = createSlice({
   name: 'globalSlice',
-  initialState: initialState,
+  initialState,
   reducers: {
     increaseCounter(state, action) {
       state.count = state.count + state.step;
@@ -31,11 +29,6 @@ const globalSlice = createSlice({
     },
     removeCocktailsSelected(state, action) {
       state.listCocktailsSelected.splice(action.payload, 1);
-      state.listCocktailsSelected.filter(
-        (cocktailsSelected) =>
-          action.payload !==
-          state.listCocktailsSelected.indexOf(cocktailsSelected)
-      );
     },
     getCocktailInfo(state, action) {
       state.cocktailInfo = action.payload;
@@ -43,9 +36,10 @@ const globalSlice = createSlice({
     setIsLoading(state, action) {
       state.isLoading = action.payload;
     },
-    handleUserLogout(state, action) {
-      state = initialState;
-      // state.initialState = [];
+    resetStoreRedux(state, action) {
+      state.listCocktailsSelected = [];
+      state.listCocktails = [];
+      // state = initialState;
     },
   },
 });

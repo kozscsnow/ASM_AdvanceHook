@@ -1,7 +1,5 @@
 import axios from 'axios';
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
@@ -34,7 +32,7 @@ function DetailListCocktailsPage(props) {
       Please try again or check your connection
       `);
       });
-  }, []);
+  }, [dispatch, cocktailID]);
 
   return (
     <div>

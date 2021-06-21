@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 
 function CartPage(props) {
@@ -12,8 +12,17 @@ function CartPage(props) {
   const removeCocktail = (indexCocktail) => {
     dispatch(GlobalActions.removeCocktailsSelected(indexCocktail));
   };
+  //Fake Loading
+  useEffect(() => {
+    dispatch(GlobalActions.setIsLoading(true));
+    const loadingFake = setTimeout(() => {
+      dispatch(GlobalActions.setIsLoading(false));
+    }, 500);
+    return () => {
+      clearTimeout(loadingFake);
+    };
+  });
 
-  dispatch(GlobalActions.setIsLoading(false))
   const renderDrinks = (cocktail, index) => {
     return (
       <tr key={cocktail.idDrink}>
