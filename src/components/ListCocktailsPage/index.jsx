@@ -6,6 +6,7 @@ import CartBox from './components/CartBox';
 import Header from './components/Header';
 import NumberDrinksBox from './components/NumberDrinksBox';
 import ResultTable from './components/ResultTable';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 function ListCocktailsPage(props) {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function ListCocktailsPage(props) {
             <NumberDrinksBox />
             <ResultTable />
             <CartBox />
+            <ScrollToTopButton />
           </div>
         </div>
       </div>

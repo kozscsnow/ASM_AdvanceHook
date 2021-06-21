@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 
-
 function DetailListCocktailsPage(props) {
   const [cocktailInfoFromID, setCocktailInfoFromID] = useState([]);
   const cocktailInfo = useSelector((state) => state.GlobalReducer.cocktailInfo);
@@ -53,7 +52,6 @@ function DetailListCocktailsPage(props) {
                 </th>
               </tr>
             </thead>
-
             <tbody>
               <tr>
                 <th style={{ minWidth: '140px' }}>Alcoholic</th>
@@ -62,6 +60,22 @@ function DetailListCocktailsPage(props) {
               <tr>
                 <th>Glass</th>
                 <td>{cocktailInfoFromID.strGlass}</td>
+              </tr>
+              <tr>
+                <th>Measure 1</th>
+                <td>{cocktailInfoFromID.strMeasure1}</td>
+              </tr>
+              <tr>
+                <th>Measure 2</th>
+                <td>{cocktailInfoFromID.strMeasure2}</td>
+              </tr>
+              <tr>
+                <th>Measure 3</th>
+                <td>{cocktailInfoFromID.strMeasure3}</td>
+              </tr>
+              <tr>
+                <th>Measure 4</th>
+                <td>{cocktailInfoFromID.strMeasure4}</td>
               </tr>
               <tr>
                 <th>Modified</th>
@@ -82,6 +96,7 @@ function DetailListCocktailsPage(props) {
             </tbody>
           </table>
           <br />
+
           <table className="table table-striped table-hover table-dark">
             <thead>
               <tr>

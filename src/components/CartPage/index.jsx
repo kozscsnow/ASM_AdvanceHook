@@ -21,7 +21,7 @@ function CartPage(props) {
     return () => {
       clearTimeout(loadingFake);
     };
-  });
+  },[dispatch]);
 
   const renderDrinks = (cocktail, index) => {
     return (

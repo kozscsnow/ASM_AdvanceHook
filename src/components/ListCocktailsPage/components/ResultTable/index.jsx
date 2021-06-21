@@ -30,7 +30,7 @@ function ResultTable(props) {
             alt={cocktail.strDrink}
           ></img>
         </td>
-        <td>{cocktail.strDrink}</td>
+        <td className="text-center">{cocktail.strDrink}</td>
         <td className="d-flex justify-content-center">
           <Link
             to="/:drinkID"
