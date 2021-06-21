@@ -1,18 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 
 function DetailListCocktailsPage(props) {
   const [cocktailInfoFromID, setCocktailInfoFromID] = useState([]);
   const cocktailInfo = useSelector((state) => state.GlobalReducer.cocktailInfo);
-  const location = useLocation();
   const dispatch = useDispatch();
 
   const cocktailID = cocktailInfo.idDrink;
 
-  console.log(location.search);
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
     //Get Cocktail from ID

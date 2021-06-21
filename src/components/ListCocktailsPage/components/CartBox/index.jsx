@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuid } from 'uuid';
 import { GlobalActions } from '../../../../redux/rootAction';
 import './CartBox.css';
-
 CartBox.propTypes = {};
 
 function CartBox(props) {
@@ -17,7 +17,7 @@ function CartBox(props) {
 
   const renderDrinks = (cocktail, index) => {
     return (
-      <div key={cocktail.idDrink} className="cart-box__items">
+      <div key={uuid()} className="cart-box__items">
         <div className="text-center img-thumbnail img-thumbnail-wrapper cart-box__thumbnail">
           <img
             src={cocktail.strDrinkThumb}

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 import styles from './Contact.module.css';
 
-import { Link } from 'react-router-dom';
 
 function Contact(props) {
   const dispatch = useDispatch();

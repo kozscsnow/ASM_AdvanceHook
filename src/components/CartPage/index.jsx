@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 import { GlobalActions } from '../../redux/rootAction';
 
 function CartPage(props) {
@@ -21,11 +22,11 @@ function CartPage(props) {
     return () => {
       clearTimeout(loadingFake);
     };
-  },[dispatch]);
+  }, [dispatch]);
 
   const renderDrinks = (cocktail, index) => {
     return (
-      <tr key={cocktail.idDrink}>
+      <tr key={uuid()}>
         <td className="text-center">{index + 1}</td>
         <td className="text-center img-thumbnail img-thumbnail-wrapper">
           <img

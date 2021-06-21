@@ -6,11 +6,10 @@ import { Roller } from 'react-awesome-spinners';
 function GlobalLoading({ children }) {
   const isLoading = useSelector((state) => state.GlobalReducer.isLoading);
   return (
-    // <div className={styles.loading}>
     <div className={styles.loading}>
       {isLoading ? (
         <div className={styles.loading__container}>
-          <Roller color="yellow"/>
+          <Roller color="yellow" />
         </div>
       ) : null}
     </div>
