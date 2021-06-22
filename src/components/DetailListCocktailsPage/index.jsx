@@ -1,24 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 
 function DetailListCocktailsPage(props) {
   const [cocktailInfoFromID, setCocktailInfoFromID] = useState([]);
-  const cocktailInfo = useSelector((state) => state.GlobalReducer.cocktailInfo);
   const dispatch = useDispatch();
 
-  const cocktailID = cocktailInfo.idDrink;
-
+  let { drinkID } = useParams();
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
     //Get Cocktail from ID
     axios
       .get(
-        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${
-          cocktailID ? cocktailID : '17225'
-        }`
+        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`
       )
       .then((response) => {
         const dataCocktailInfoFromID = response.data.drinks;
@@ -32,7 +28,7 @@ function DetailListCocktailsPage(props) {
       Please try again or check your connection
       `);
       });
-  }, [dispatch, cocktailID]);
+  }, [dispatch, drinkID]);
 
   return (
     <div>

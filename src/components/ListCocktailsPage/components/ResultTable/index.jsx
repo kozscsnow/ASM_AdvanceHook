@@ -6,17 +6,13 @@ import { GlobalActions } from '../../../../redux/rootAction';
 import './ResultTable.css';
 
 function ResultTable(props) {
+  const dispatch = useDispatch();
   const listCocktails = useSelector(
     (state) => state.GlobalReducer.listCocktails
   );
-  const dispatch = useDispatch();
 
   const getCocktail = (cocktail) => {
     dispatch(GlobalActions.pushCocktailsSelected(cocktail));
-  };
-
-  const getCocktailInfo = (cocktail) => {
-    dispatch(GlobalActions.getCocktailInfo(cocktail));
   };
 
   const renderDrinks = (cocktail, index) => {
@@ -33,12 +29,9 @@ function ResultTable(props) {
         <td className="text-center">{cocktail.strDrink}</td>
         <td className="d-flex justify-content-center">
           <Link
-            to="/:drinkID"
             className="btn btn-info "
-            onClick={() => {
-              console.log('object');
-              getCocktailInfo(cocktail);
-            }}
+            value={cocktail.idDrink}
+            to={`/${cocktail.idDrink}`}
           >
             View Detail
           </Link>

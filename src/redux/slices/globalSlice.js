@@ -27,8 +27,7 @@ const globalSlice = createSlice({
       state.isLoading = action.payload;
     },
     resetStoreRedux(state, action) {
-      state.listCocktailsSelected = [];
-      state.listCocktails = [];
+      return initialState;
     },
   },
 });
