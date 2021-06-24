@@ -6,10 +6,11 @@ import { GlobalActions } from '../../../../redux/rootAction';
 import './ResultTable.css';
 
 function ResultTable(props) {
+  const { listCocktails } = props;
   const dispatch = useDispatch();
-  const listCocktails = useSelector(
-    (state) => state.GlobalReducer.listCocktails
-  );
+  // const listCocktails = useSelector(
+  //   (state) => state.GlobalReducer.listCocktails
+  // );
 
   const getCocktail = (cocktail) => {
     dispatch(GlobalActions.pushCocktailsSelected(cocktail));
@@ -31,7 +32,7 @@ function ResultTable(props) {
           <Link
             className="btn btn-info "
             value={cocktail.idDrink}
-            to={`/${cocktail.idDrink}`}
+            to={`/drink/${cocktail.idDrink}`}
           >
             View Detail
           </Link>

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  listCocktails: [],
+  // listCocktails: [],
   listCocktailsSelected: [],
   cocktailInfo: '',
   isLoading: true,
@@ -11,9 +11,9 @@ const globalSlice = createSlice({
   name: 'globalSlice',
   initialState,
   reducers: {
-    getListCocktailAPI(state, action) {
-      state.listCocktails = action.payload;
-    },
+    // getListCocktailAPI(state, action) {
+    //   state.listCocktails = action.payload;
+    // },
     pushCocktailsSelected(state, action) {
       state.listCocktailsSelected.push(action.payload);
     },

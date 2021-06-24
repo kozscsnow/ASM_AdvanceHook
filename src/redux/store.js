@@ -3,11 +3,11 @@ import logger from 'redux-logger';
 
 import rootReducer from './rootReducer';
 
-const middleware = [...getDefaultMiddleware(), logger];
+// const middleware = [...getDefaultMiddleware(), logger];
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware,
+  // middleware,
 });
 
 export default store;

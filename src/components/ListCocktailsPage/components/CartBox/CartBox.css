@@ -21,6 +21,12 @@
   display: none;
 }
 
+.cart-box__name{
+  max-width: 130px;
+
+  text-align: center;
+}
+
 @media screen and (max-width: 1300px) {
   .cart-box {
     max-width: 150px;

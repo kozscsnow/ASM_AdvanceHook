@@ -14,12 +14,16 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <AuthRoute path="/login" component={LoginForm} />
         <PrivateRoute exact path="/" component={ListCocktailsPage} />
         <PrivateRoute exact path="/cart" component={CartPage} />
-        <AuthRoute path="/login" component={LoginForm} />
+        <PrivateRoute
+          exact
+          path="/drink/:drinkID"
+          component={DetailListCocktailsPage}
+        />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
-        <PrivateRoute path="/:drinkID" component={DetailListCocktailsPage} />
         <Route component={NotFound} />
       </Switch>
     </div>

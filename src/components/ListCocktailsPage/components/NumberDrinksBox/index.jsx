@@ -4,10 +4,7 @@ import '../../../../App.css';
 import './NumberDrinksBox.css';
 
 function NumberDrinkBox(props) {
-  const listCocktails = useSelector(
-    (state) => state.GlobalReducer.listCocktails
-  );
-
+  const { listCocktails } = props;
   return (
     <div>
       {listCocktails ? (
