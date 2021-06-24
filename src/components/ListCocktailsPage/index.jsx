@@ -9,9 +9,12 @@ import ResultTable from './components/ResultTable';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import SearchInput from './components/SearchInput';
 import { debounce } from 'lodash';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 function ListCocktailsPage(props) {
+  const [count, setCount] = useState(0);
+  // const [inputValue, setInputValue] = useState('');
+
   const dispatch = useDispatch();
   const [listCocktails, setListCocktails] = useState([]);
   useEffect(() => {
@@ -38,21 +41,25 @@ function ListCocktailsPage(props) {
         `);
       });
   };
-  const handleInputValueChange = debounce((inputValue) => {
-    dispatch(GlobalActions.setIsLoading(true));
-    handleGetDrinks(inputValue);
-    console.log(inputValue);
-  }, 300);
+  const handleInputValueChange = useCallback(
+    debounce((inputValue) => {
+      dispatch(GlobalActions.setIsLoading(true));
+      handleGetDrinks(inputValue);
+    }, 300),
+    []
+  );
 
-  console.log('render');
+  console.log('render main page');
   return (
     <div>
       <div className="container" style={{ position: 'relative' }}>
         <div className="row justify-content-center">
           <div className="col-8">
+            <button onClick={() => setCount(count + 1)}>Button</button>
+            {count}
             <Header />
             <SearchInput onInputValueChange={handleInputValueChange} />
-            <NumberDrinksBox listCocktails={listCocktails}/>
+            <NumberDrinksBox listCocktails={listCocktails} />
             <ResultTable listCocktails={listCocktails} />
             <CartBox />
             <ScrollToTopButton />

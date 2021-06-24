@@ -3,6 +3,7 @@ import '../../../../App.css';
 import './SearchInput.css';
 
 function SearchInput(props) {
+  console.log('render Search Input');
   const [inputValue, setInputValue] = useState('');
 
   const { onInputValueChange } = props;
