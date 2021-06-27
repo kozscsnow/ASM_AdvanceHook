@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { debounce } from 'lodash';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { GlobalActions } from '../../redux/rootAction';
 import CartBox from './components/CartBox';
 import Header from './components/Header';
@@ -8,21 +9,29 @@ import NumberDrinksBox from './components/NumberDrinksBox';
 import ResultTable from './components/ResultTable';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import SearchInput from './components/SearchInput';
-import { debounce } from 'lodash';
-import { useState, useCallback } from 'react';
 
 function ListCocktailsPage(props) {
-  const [count, setCount] = useState(0);
   // const [inputValue, setInputValue] = useState('');
+  // const inputValueRef = useRef('');
 
   const dispatch = useDispatch();
   const [listCocktails, setListCocktails] = useState([]);
+  const inputValue = useSelector((state) => state.GlobalReducer.inputValue);
+  // useEffect(() => {
+  //   dispatch(GlobalActions.setIsLoading(true));
+  //   handleGetDrinks();
+  // }, []);
+  // useEffect(() => {
+  //   dispatch(GlobalActions.setIsLoading(true));
+  //   handleGetDrinks();
+  // }, []);
+
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
-    handleGetDrinks();
-  }, []);
+    handleGetDrinks(inputValue ? inputValue : 'margarita');
+  }, [inputValue]);
 
-  const handleGetDrinks = (searchValue = 'margarita') => {
+  const handleGetDrinks = (searchValue) => {
     const domainURL = 'https://www.thecocktaildb.com/';
     axios
       .get(`${domainURL}api/json/v1/1/search.php?s=${searchValue}`)
@@ -45,18 +54,16 @@ function ListCocktailsPage(props) {
     debounce((inputValue) => {
       dispatch(GlobalActions.setIsLoading(true));
       handleGetDrinks(inputValue);
+      dispatch(GlobalActions.getInputValue(inputValue));
     }, 300),
     []
   );
 
-  console.log('render main page');
   return (
     <div>
       <div className="container" style={{ position: 'relative' }}>
         <div className="row justify-content-center">
           <div className="col-8">
-            <button onClick={() => setCount(count + 1)}>Button</button>
-            {count}
             <Header />
             <SearchInput onInputValueChange={handleInputValueChange} />
             <NumberDrinksBox listCocktails={listCocktails} />

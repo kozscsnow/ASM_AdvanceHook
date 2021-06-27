@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import '../../../../App.css';
 import './SearchInput.css';
 
 function SearchInput(props) {
-  console.log('render Search Input');
   const [inputValue, setInputValue] = useState('');
+  const inputValueStoreRedux = useSelector(
+    (state) => state.GlobalReducer.inputValue
+  );
 
   const { onInputValueChange } = props;
 
@@ -24,7 +27,7 @@ function SearchInput(props) {
             name="searchInput"
             id="searchInput"
             value={inputValue}
-            placeholder="Margarita"
+            placeholder={inputValueStoreRedux ? inputValueStoreRedux : 'Margarita'}
             onChange={handleInputChange}
           ></input>
         </div>
@@ -33,4 +36,4 @@ function SearchInput(props) {
   );
 }
 
-export default SearchInput;
+export default React.memo(SearchInput);

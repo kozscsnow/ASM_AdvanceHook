@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  // listCocktails: [],
+  inputValue: '',
   listCocktailsSelected: [],
   cocktailInfo: '',
   isLoading: true,
@@ -29,6 +29,9 @@ const globalSlice = createSlice({
     resetStoreRedux(state, action) {
       return initialState;
     },
+    getInputValue(state,action) {
+      state.inputValue = action.payload
+    }
   },
 });
 
