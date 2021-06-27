@@ -28,7 +28,7 @@ function ResultTable(props) {
           <Link
             className="btn btn-info "
             value={cocktail.idDrink}
-            to={`/drink/${cocktail.idDrink}`}
+            to={`/drinks/${cocktail.idDrink}`}
           >
             View Detail
           </Link>

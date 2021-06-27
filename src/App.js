@@ -19,7 +19,7 @@ function App() {
         <PrivateRoute exact path="/cart" component={CartPage} />
         <PrivateRoute
           exact
-          path="/drink/:drinkID"
+          path="/drinks/:drinkID"
           component={DetailListCocktailsPage}
         />
         <Route path="/about" component={About} />

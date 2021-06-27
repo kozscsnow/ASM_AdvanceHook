@@ -43,7 +43,6 @@ function ListCocktailsPage() {
       dispatch(GlobalActions.setIsLoading(true));
       handleGetDrinks(inputValue);
       dispatch(GlobalActions.getInputValue(inputValue));
-      console.log(inputValue);
     }, 300),
     [inputValue]
   );

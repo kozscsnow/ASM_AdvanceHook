@@ -8,7 +8,6 @@ import './LoginForm.css';
 // const history = createBrowserHistory();
 function LoginForm(props) {
   const history = useHistory();
-  const { onLogin } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -33,10 +32,6 @@ function LoginForm(props) {
     let isFormValid = validate();
     if (isFormValid) {
       history.push('/');
-      if (onLogin) {
-        onLogin();
-      }
-
       //Clear errorMessage
       setErrorMessage('');
     }
@@ -63,7 +58,6 @@ function LoginForm(props) {
     <div>
       <div className="login__container ">
         <form className=" login-form" onSubmit={handleSubmit}>
-          {/* Input User */}
           <div className="form-group form-group-id">
             <label id="form-id" htmlFor="form-id">
               User Name
@@ -78,7 +72,6 @@ function LoginForm(props) {
               onChange={handleGetUsername}
             ></input>
           </div>
-          {/* Input Password */}
           <div className="form-group form-group-password">
             <label id="form-password" htmlFor="form-password">
               Password
@@ -101,7 +94,6 @@ function LoginForm(props) {
               Log in
             </button>
           </div>
-          {/* Button Submit */}
         </form>
       </div>
     </div>
