@@ -27,7 +27,9 @@ function SearchInput(props) {
             name="searchInput"
             id="searchInput"
             value={inputValue}
-            placeholder={inputValueStoreRedux ? inputValueStoreRedux : 'Margarita'}
+            placeholder={
+              inputValueStoreRedux ? inputValueStoreRedux : 'Margarita'
+            }
             onChange={handleInputChange}
           ></input>
         </div>
@@ -36,4 +38,4 @@ function SearchInput(props) {
   );
 }
 
-export default React.memo(SearchInput);
+export default SearchInput;

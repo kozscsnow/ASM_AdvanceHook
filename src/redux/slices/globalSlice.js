@@ -11,9 +11,6 @@ const globalSlice = createSlice({
   name: 'globalSlice',
   initialState,
   reducers: {
-    // getListCocktailAPI(state, action) {
-    //   state.listCocktails = action.payload;
-    // },
     pushCocktailsSelected(state, action) {
       state.listCocktailsSelected.push(action.payload);
     },
@@ -26,12 +23,12 @@ const globalSlice = createSlice({
     setIsLoading(state, action) {
       state.isLoading = action.payload;
     },
+    getInputValue(state, action) {
+      state.inputValue = action.payload;
+    },
     resetStoreRedux(state, action) {
       return initialState;
     },
-    getInputValue(state,action) {
-      state.inputValue = action.payload
-    }
   },
 });
 

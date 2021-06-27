@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../../../App.css';
 import { GlobalActions } from '../../../../redux/rootAction';
@@ -8,10 +8,6 @@ import './ResultTable.css';
 function ResultTable(props) {
   const { listCocktails } = props;
   const dispatch = useDispatch();
-  // const listCocktails = useSelector(
-  //   (state) => state.GlobalReducer.listCocktails
-  // );
-
   const getCocktail = (cocktail) => {
     dispatch(GlobalActions.pushCocktailsSelected(cocktail));
   };

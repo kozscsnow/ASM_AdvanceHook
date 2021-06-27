@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { debounce } from 'lodash';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GlobalActions } from '../../redux/rootAction';
 import CartBox from './components/CartBox';
@@ -10,26 +10,15 @@ import ResultTable from './components/ResultTable';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import SearchInput from './components/SearchInput';
 
-function ListCocktailsPage(props) {
-  // const [inputValue, setInputValue] = useState('');
-  // const inputValueRef = useRef('');
-
+function ListCocktailsPage() {
   const dispatch = useDispatch();
   const [listCocktails, setListCocktails] = useState([]);
   const inputValue = useSelector((state) => state.GlobalReducer.inputValue);
-  // useEffect(() => {
-  //   dispatch(GlobalActions.setIsLoading(true));
-  //   handleGetDrinks();
-  // }, []);
-  // useEffect(() => {
-  //   dispatch(GlobalActions.setIsLoading(true));
-  //   handleGetDrinks();
-  // }, []);
 
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
     handleGetDrinks(inputValue ? inputValue : 'margarita');
-  }, [inputValue]);
+  }, [inputValue, dispatch]);
 
   const handleGetDrinks = (searchValue) => {
     const domainURL = 'https://www.thecocktaildb.com/';
@@ -38,7 +27,6 @@ function ListCocktailsPage(props) {
       .then((response) => {
         const dataListCocktails = response.data.drinks;
         setListCocktails(dataListCocktails);
-        // dispatch(GlobalActions.getListCocktailAPI(dataListCocktails));
         dispatch(GlobalActions.setIsLoading(false));
       })
       .catch((e) => {
@@ -55,8 +43,9 @@ function ListCocktailsPage(props) {
       dispatch(GlobalActions.setIsLoading(true));
       handleGetDrinks(inputValue);
       dispatch(GlobalActions.getInputValue(inputValue));
+      console.log(inputValue);
     }, 300),
-    []
+    [inputValue]
   );
 
   return (
